@@ -24,14 +24,9 @@ import com.entity.Currency;
 @SpringBootApplication()
 @Controller
 //@RequestMapping("exchange")
-public class CurrencyExchangeApplication extends SpringBootServletInitializer {
+public class CurrencyExchangeApplication {
 
 	BusinessCurrency businessCurrency = new BusinessCurrency();
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CurrencyExchangeApplication.class);
-	}
 
 	@RequestMapping("/")
 	public String search(ModelMap model, @RequestParam(name = "fromCode", required = false) String fromCode,

@@ -99,10 +99,12 @@
 										<goal>resource</goal>
 										<goal>build</goal>
 										<goal>apply</goal>
+										<goal>repackage</goal> 
 									</goals>
 								</execution>
 							</executions>
 							<configuration>
+								
 								<generator>
 									<config>
 										<vertx>
@@ -110,6 +112,7 @@
 										</vertx>
 									</config>
 								</generator>
+
 							</configuration>
 						</plugin>
 					</plugins>
