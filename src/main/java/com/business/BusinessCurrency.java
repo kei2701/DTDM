@@ -84,7 +84,4 @@ public class BusinessCurrency {
 		return gson.toJson(currencyChartModels);
 	}
 	
-	public static void main(String[] args) throws IOException, ParseException {
-		
-	}
 }
