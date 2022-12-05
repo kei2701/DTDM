@@ -16,11 +16,11 @@ import com.business.BusinessCurrency;
 import com.entity.Currency;
 
 @RestController
-@RequestMapping("exchange")
+@RequestMapping("no")
 public class ExchangeController {
 	BusinessCurrency businessCurrency = new BusinessCurrency();
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public ModelAndView search(ModelMap model, 
 			@RequestParam(name = "fromCode", required = false) String fromCode,
 			@RequestParam("toCode") Optional<String> toCode,
