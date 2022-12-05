@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,15 +19,16 @@ import com.business.BusinessCurrency;
 import com.controller.ExchangeController;
 import com.entity.Currency;
 
-@SpringBootApplication
-@RestController
-@RequestMapping("exchange")
+@SpringBootApplication()
+@Controller
+//@RequestMapping("exchange")
+@ComponentScan(basePackages= {"com"})
 public class CurrencyExchangeApplication {
 	
 BusinessCurrency businessCurrency = new BusinessCurrency();
 	
-	@RequestMapping("")
-	public ModelAndView search(ModelMap model, 
+	@RequestMapping("/")
+	public String search(ModelMap model, 
 			@RequestParam(name = "fromCode", required = false) String fromCode,
 			@RequestParam("toCode") Optional<String> toCode,
 			@RequestParam("amount") Optional<String> amount)
@@ -39,24 +41,26 @@ BusinessCurrency businessCurrency = new BusinessCurrency();
 		List<Currency> currencies = businessCurrency.getAllCurrencies();
 		String json = businessCurrency.getTop30RatesWithAmountJson(fromCode, toCodeString, Double.valueOf(amountDouble));
 		
-		ModelAndView mav = new ModelAndView("index");
 		
-//		model.addAttribute("result", result);
-//		model.addAttribute("json", json);
-//		model.addAttribute("symbols", currencies);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("json", json);
+		model.addAttribute("symbols", currencies);
+		
+		model.addAttribute("fromCode", fromCode);
+		model.addAttribute("toCode", toCodeString);
+		model.addAttribute("amount", amountDouble);
+		
+//		ModelAndView mav = new ModelAndView("index");
 //		
-//		model.addAttribute("fromCode", fromCode);
-//		model.addAttribute("toCode", toCodeString);
-//		model.addAttribute("amount", amountDouble);
-		
-		mav.addObject("result", result);
-		mav.addObject("json", json);
-		mav.addObject("symbols", currencies);
-		mav.addObject("fromCode", fromCode);
-		mav.addObject("toCode", toCodeString);
-		mav.addObject("amount", amountDouble);
+//		mav.addObject("result", result);
+//		mav.addObject("json", json);
+//		mav.addObject("symbols", currencies);
+//		mav.addObject("fromCode", fromCode);
+//		mav.addObject("toCode", toCodeString);
+//		mav.addObject("amount", amountDouble);
 
-		return mav;
+		return "index";
 	}
 	
 	public static void main(String[] args) {
