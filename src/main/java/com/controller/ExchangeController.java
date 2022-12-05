@@ -20,7 +20,7 @@ import com.entity.Currency;
 public class ExchangeController {
 	BusinessCurrency businessCurrency = new BusinessCurrency();
 	
-	@RequestMapping("")
+	@RequestMapping("/")
 	public ModelAndView search(ModelMap model, 
 			@RequestParam(name = "fromCode", required = false) String fromCode,
 			@RequestParam("toCode") Optional<String> toCode,
