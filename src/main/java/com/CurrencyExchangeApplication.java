@@ -24,7 +24,6 @@ import com.entity.Currency;
 @SpringBootApplication()
 @Controller
 //@RequestMapping("exchange")
-@ComponentScan(basePackages = { "com" })
 public class CurrencyExchangeApplication extends SpringBootServletInitializer {
 
 	BusinessCurrency businessCurrency = new BusinessCurrency();
